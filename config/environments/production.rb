@@ -15,7 +15,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Set application domain, to be able to run `rake telegram:bot:set_webhook`
-  routes.default_url_options = {host: (ENV['HTTP_HOST'] || 'localhost'), protocol: 'http'}
+  routes.default_url_options = {host: 'qwalletapp.io', protocol: 'https'}
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable Bot's session unconditionally.
-  config.telegram_updates_controller.session_store = :file_store
+config.telegram_updates_controller.session_store = :file_store, Rails.root.join('tmp', 'session_store')
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
